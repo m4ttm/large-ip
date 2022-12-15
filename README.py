@@ -1,6 +1,6 @@
 # large-ip
 
-## Display the ip address in a Terminal window with large print using 5x5 block characters
+## Display the IP address in a Terminal window with large print using 5x5 block characters
 
 ## Usage
  - Clone the repo
