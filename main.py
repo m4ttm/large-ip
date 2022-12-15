@@ -26,7 +26,7 @@ def get_external_ip():
         external_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
         # If 4 digits after the decimal point, remove the last digit
         if len(external_ip.split('.')[3]) == 4:
-            external_ip = external_ip[:-1]
+            external_ip = external_ip[0:2] + external_ip[3][0:2]
         return external_ip
     except:
         external_ip = '000.000.000.000'
