@@ -12,7 +12,7 @@ def large_print(intext):
     cols = len(text[0][0])
     
     for row in range(rows):
-        outrow = ''
+        outrow = '  '
         for char in range(chars):
             thechar = text[char][row]
             if type(thechar) == tuple:
@@ -24,6 +24,10 @@ def large_print(intext):
 def get_external_ip():
     try:
         external_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
+        # If 4 digits after the decimal point, remove the last digit
+        if len(external_ip.split('.')[3]) == 4:
+            external_ip = external_ip[:-1]
+        return external_ip
     except:
         external_ip = '000.000.000.000'
     return external_ip
@@ -103,6 +107,8 @@ def char_to_ascii_block(char):
 
 
 def main():
+    # Two blank lines
+    print('\n\n')
     while True:
         external_ip = get_external_ip()
         large_print(external_ip)
