@@ -3,7 +3,8 @@ import time
 import urllib.request
 
 
-def large_print(intext):
+def large_print(intext, newlines=10):
+    print('\n'*newlines)
     text = []
     for char in intext:
         text.append(char_to_ascii_block(char))
@@ -22,6 +23,7 @@ def large_print(intext):
 
 
 def get_external_ip():
+    external_ip = '000.000.000.000'
     try:
         external_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
         # If 4 digits after the decimal point, remove the last digit
@@ -109,9 +111,12 @@ def char_to_ascii_block(char):
 def main():
     # Two blank lines
     print('\n\n')
+    prev_external_ip, external_ip = None, None
     while True:
+        prev_external_ip = external_ip
         external_ip = get_external_ip()
-        large_print(external_ip)
+        if external_ip != prev_external_ip:
+            large_print(external_ip)
         time.sleep(1)
         sys.stdout.write("\033[F" * 5) # Clears the previously printed lines
 
