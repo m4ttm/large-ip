@@ -118,7 +118,7 @@ def main():
         if external_ip != prev_external_ip:
             large_print(external_ip)
         time.sleep(1)
-        sys.stdout.write("\033[F" * 5) # Clears the previously printed lines
+        #sys.stdout.write("\033[F" * 5) # Clears the previously printed lines
 
 if __name__ == '__main__':
     main()
